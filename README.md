@@ -99,3 +99,6 @@
 
 ◯本リリース
 ・位置情報　（練習場所投稿機能）
+
+画面遷移図
+https://www.figma.com/design/Y7AxDGqgenzwrK8QTeoZgo/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?m=auto&t=vy2LvGS7mMsld18A-6
