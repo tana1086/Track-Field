@@ -73,13 +73,13 @@
 ・会員登録（メール認証）
 ・ログイン・ログアウト機能
 ・投稿機能(フォームのテンプレート作成)
+　　・いいね、ブックマーク機能
 　　・おすすめ練習場投稿
 　　・大会結果・練習記録投稿
 ・プロフィール機能（自己紹介、目標設定、進捗確認、自己ベスト、シーズンベスト一覧）
 ・グラフ機能
 ・CSV出力機能
 ・全国大会参加標準記録の表示機能
-
 
 本リリース
 ・トレーニング日記機能
@@ -100,5 +100,5 @@
 ◯本リリース
 ・位置情報　（練習場所投稿機能）
 
-画面遷移図
-https://www.figma.com/design/Y7AxDGqgenzwrK8QTeoZgo/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?m=auto&t=vy2LvGS7mMsld18A-6
+ 画面遷移図
+ https://www.figma.com/design/Y7AxDGqgenzwrK8QTeoZgo/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?m=auto&t=vy2LvGS7mMsld18A-6
