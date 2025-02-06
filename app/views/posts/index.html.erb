@@ -14,3 +14,6 @@
 </div>
 
 <%= link_to "New post", new_post_path %>
+
+<br>
+<%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }  %>
