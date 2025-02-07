@@ -1,4 +1,4 @@
-class CompetitionsController < ApplicationController
+class CompetitionResultsController < ApplicationController
 
   def index
   end
