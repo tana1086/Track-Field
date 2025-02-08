@@ -7,16 +7,14 @@
 </div>
 <div class="border-b border-gray-300 mb-6"></div>
 
-<div class="max-w-4xl mx-auto grid grid-cols-1 gap-4">
+<div class="flex-1 max-w-4xl mx-auto grid grid-cols-1 gap-4 pb-20">
   <% @competition_results.each do |result|%>
     <div class="border border-gray-300 rounded-lg bg-white shadow-md p-4 w-full float-right">
       <p>開催日：<%= result.date%></p>
       <p>大会名：<%= result.name %></p>
-      <div class="mt-auto text-right">
+      <div class="text-right">
         <%= link_to '詳細', result, class: "py-1 px-2 rounded bg-blue-400" %>
       </div>
-      <br>
-      <br>
     </div>
   <% end %>
 </div>
