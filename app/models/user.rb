@@ -6,4 +6,5 @@ class User < ApplicationRecord
          :confirmable
 
   has_one :profile
+  has_one :competition_result
 end

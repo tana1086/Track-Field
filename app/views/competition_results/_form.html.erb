@@ -1,0 +1,23 @@
+<%= form_with(model: @competition_result) do |f| %>
+  <div>
+    <%= f.label :date %>
+    <%= f.date_field :date %>
+  </div>
+
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :venue %>
+    <%= f.text_field :venue %>
+  </div>
+
+  <div>
+    <%= f.label :memo %>
+    <%= f.text_area :memo %>
+  </div>
+
+  <%= f.submit %>
+<% end %>
