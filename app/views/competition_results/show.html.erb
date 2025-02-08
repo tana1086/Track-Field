@@ -1,10 +1,30 @@
 <%= link_to '←', competition_results_path, class: "text-3xl" %>
-<div class="text-center">
-    <p class="text-2xl">大会詳細</p>
-    <p>大会名:<%= @competition_result.name %></p>
-    <p>開催場所：<%= @competition_result.venue %></p>
-    <p>開催日：<%= @competition_result.date%></p>
-    <p>メモ：<%= @competition_result.memo %></p>
+
+<div class="flex flex-col items-center justify-center">
+  <div class="text-center max-w-4xl mx-auto grid grid-cols-1 gap-4">
+    <p class="text-2xl pb-5">大会詳細</p>
+
+    <div class="grid grid-cols-2 gap-2 items-center">
+      <p class="text-left font-bold">大会名:</p>
+      <p class="text-left"><%= @competition_result.name %></p>
+    </div>
+
+    <div class="grid grid-cols-2 gap-2 items-center">
+      <p class="text-left font-bold">開催場所：</p>
+      <p class="text-left"><%= @competition_result.venue %></p>
+    </div>
+
+    <div class="grid grid-cols-2 gap-2 items-center">
+      <p class="text-left font-bold">開催日：</p>
+      <p class="text-left"><%= @competition_result.date%></p>
+    </div>
+
+    <div class="grid grid-cols-2 gap-2 items-center">
+      <p class="text-left font-bold">メモ：</p>
+      <p  class="text-left"><%= @competition_result.memo %></p>
+    </div>
+
     <%= link_to '編集', edit_competition_result_path, class: "py-1 px-2 rounded bg-blue-400" %>
-<%= link_to '削除', competition_result_path, data: { 'turbo-method': :delete, turbo_confirm: '削除してよろしいですか？'}, class: "py-1 px-2 rounded bg-red-400" %>
+    <%= link_to '削除', competition_result_path, data: { 'turbo-method': :delete, turbo_confirm: '削除してよろしいですか？'}, class: "py-1 px-2 rounded bg-red-400" %>
+  </div>
 </div>

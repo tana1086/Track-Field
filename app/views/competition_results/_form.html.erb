@@ -1,23 +1,27 @@
-<%= form_with(model: @competition_result) do |f| %>
-  <div>
-    <%= f.label :date %>
-    <%= f.date_field :date %>
-  </div>
+<div class="flex items-center justify-center">
+  <%= form_with(model: @competition_result) do |f| %>
+    <div class="text-center max-w-4xl mx-auto grid grid-cols-1 gap-4">
+      <div class="grid grid-cols-2  items-center">
+        <%= f.label :date, '日付', class: "mr-4" %>
+        <%= f.date_field :date, class: "border border-gray-300 p-1 rounded" %>
+      </div>
 
-  <div>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
+      <div class="grid grid-cols-2  items-center">
+        <%= f.label :name, '大会名', class: "mr-4" %>
+        <%= f.text_field :name, class: "border border-gray-300 p-1 rounded" %>
+      </div>
 
-  <div>
-    <%= f.label :venue %>
-    <%= f.text_field :venue %>
-  </div>
+      <div class="grid grid-cols-2  items-center">
+        <%= f.label :venue, '会場', class: "mr-4" %>
+        <%= f.text_field :venue, class: "border border-gray-300 p-1 rounded" %>
+      </div>
 
-  <div>
-    <%= f.label :memo %>
-    <%= f.text_area :memo %>
-  </div>
+      <div class="grid grid-cols-2  items-center">
+        <%= f.label :memo, 'メモ', class: "mr-4" %>
+        <%= f.text_area :memo, class: "border border-gray-300 p-1 rounded" %>
+      </div>
 
-  <%= f.submit %>
-<% end %>
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>
