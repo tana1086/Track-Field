@@ -1,18 +1,75 @@
 <div class="flex items-center justify-center">
   <%= form_with(model: @competition_result) do |f| %>
     <div class="text-center max-w-4xl mx-auto grid grid-cols-1 gap-4">
+
+      <div id="select" class="grid grid-cols-2 items-center">
+        <%= f.label :event_type, '種目※', class: "mr-4" %>
+        <%= f.select :event_type, @event_types, {}, { id: 'event_type_select', class: 'border border-gray-300 p-1 rounded' } %>
+      </div>
+
       <div class="grid grid-cols-2  items-center">
-        <%= f.label :date, '日付', class: "mr-4" %>
+        <%= f.label :date, '日付※', class: "mr-4" %>
         <%= f.date_field :date, class: "border border-gray-300 p-1 rounded" %>
       </div>
 
       <div class="grid grid-cols-2  items-center">
-        <%= f.label :name, '大会名', class: "mr-4" %>
+        <%= f.label :name, '大会名※', class: "mr-4" %>
         <%= f.text_field :name, class: "border border-gray-300 p-1 rounded" %>
       </div>
 
       <div class="grid grid-cols-2  items-center">
         <%= f.label :venue, '会場', class: "mr-4" %>
+        <%= f.text_field :venue, class: "border border-gray-300 p-1 rounded" %>
+      </div>
+
+      <div class="form sprint grid grid-cols-2  items-center" style="visibility: hidden; position: absolute;">
+        <%= f.label :record, 'タイム', class: "mr-4" %>
+        <%= f.number_field :record, step: "0.01", class: "border border-gray-300 p-1 rounded" %>
+      </div>
+
+      <div class="form sprint grid grid-cols-2  items-center" style="visibility: hidden; position: absolute;">
+        <%= f.label :wind_speed, '風速', class: "mr-4" %>
+        <%= f.number_field :wind_speed, step: "0.1", class: "border border-gray-300 p-1 rounded" %>
+      </div>
+
+      <div class="form middle-and-long grid grid-cols-2  items-center" style="visibility: hidden; position: absolute;">
+        <%= f.label :record, 'タイム', class: "mr-4" %>
+        <%= f.number_field :venue, step: "0.01", class: "border border-gray-300 p-1 rounded" %>
+      </div>
+
+      <div class="form middle-and-long grid grid-cols-2  items-center" style="visibility: hidden; position: absolute;">
+        <%= f.label :rap_time, 'ラップタイム', class: "mr-4" %>
+        <%= f.number_field :venue, step: "0.01", class: "border border-gray-300 p-1 rounded" %>
+      </div>
+
+      <div class="form jump grid grid-cols-2  items-center" style="visibility: hidden; position: absolute;">
+        <%= f.label :record, '記録', class: "mr-4" %>
+        <%= f.number_field :venue, step: "0.01", class: "border border-gray-300 p-1 rounded" %>
+      </div>
+
+      <div class="form jump grid grid-cols-2  items-center" style="visibility: hidden; position: absolute;">
+        <%= f.label :wind_speed, '風速', class: "mr-4" %>
+        <%= f.number_field :venue, step: "0.1", class: "border border-gray-300 p-1 rounded" %>
+      </div>
+
+      <div class="form jump grid grid-cols-2  items-center" style="visibility: hidden; position: absolute;">
+        <%= f.label :venue, '助走距離', class: "mr-4" %>
+        <%= f.number_field :venue, step: "0.01",  class: "border border-gray-300 p-1 rounded" %>
+      </div>
+
+      <div class="form throwing grid grid-cols-2  items-center" style="visibility: hidden; position: absolute;">
+        <%= f.label :record, '記録', class: "mr-4" %>
+        <%= f.number_field :venue, step: "0.01",  class: "border border-gray-300 p-1 rounded" %>
+      </div>
+
+
+      <div class="form throwing grid grid-cols-2  items-center" style="visibility: hidden; position: absolute;">
+        <%= f.label :venue, '助走距離', class: "mr-4" %>
+        <%= f.number_field :venue, step: "0.01",  class: "border border-gray-300 p-1 rounded" %>
+      </div>
+
+      <div class="form combined grid grid-cols-2  items-center" style="visibility: hidden; position: absolute;">
+        <%= f.label :venue, '混成', class: "mr-4" %>
         <%= f.text_field :venue, class: "border border-gray-300 p-1 rounded" %>
       </div>
 

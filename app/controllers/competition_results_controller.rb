@@ -8,6 +8,7 @@ class CompetitionResultsController < ApplicationController
 
   def new
     @competition_result = CompetitionResult.new
+    @event_types = CompetitionResult.event_types.keys.map { |k| [I18n.t("enum.competition_result.event_type.#{k}"), k] }
   end
 
   def create
@@ -45,6 +46,6 @@ class CompetitionResultsController < ApplicationController
     end
 
     def competition_result_params
-      params.require(:competition_result).permit(:name, :venue, :date, :memo).merge(user_id: current_user.id)
+      params.require(:competition_result).permit(:name, :venue, :date, :memo, :event_type, :record, :wind_speed).merge(user_id: current_user.id,)
     end
 end
