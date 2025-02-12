@@ -1,10 +1,10 @@
 <div class="flex items-center justify-center">
-  <%= form_with(model: @competition_result) do |f| %>
+  <%= form_with(model: @competition_result, url: competition_results_path) do |f| %>
     <div class="text-center max-w-4xl mx-auto grid grid-cols-1 gap-4">
 
       <div id="select" class="grid grid-cols-2 items-center">
         <%= f.label :event_type, '種目※', class: "mr-4" %>
-        <%= f.select :event_type, @event_types, {}, { id: 'event_type_select', class: 'border border-gray-300 p-1 rounded' } %>
+        <%= f.select :event_type, @event_type, {}, { id: 'event_type_select', class: 'border border-gray-300 p-1 rounded' } %>
       </div>
 
       <div class="grid grid-cols-2  items-center">
