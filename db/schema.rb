@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_02_08_125007) do
+ActiveRecord::Schema[7.2].define(version: 2025_02_12_095449) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,10 +48,10 @@ ActiveRecord::Schema[7.2].define(version: 2025_02_08_125007) do
   create_table "sprints", force: :cascade do |t|
     t.float "record"
     t.float "wind_speed"
-    t.bigint "competition_results_id", null: false
+    t.bigint "competition_result_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["competition_results_id"], name: "index_sprints_on_competition_results_id"
+    t.index ["competition_result_id"], name: "index_sprints_on_competition_result_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -72,5 +72,5 @@ ActiveRecord::Schema[7.2].define(version: 2025_02_08_125007) do
 
   add_foreign_key "competition_results", "users"
   add_foreign_key "profiles", "users"
-  add_foreign_key "sprints", "competition_results", column: "competition_results_id"
+  add_foreign_key "sprints", "competition_results"
 end
