@@ -1,7 +1,7 @@
 class CompetitionResultForm
     include ActiveModel::Model
 
-    attr_accessor :event_type, :name, :venue, :date, :memo, :record, :wind_speed, :approach, :lap_time, :pacer
+    attr_accessor :event_type, :name, :venue, :date, :memo, :record, :wind_speed, :approach, :lap_time, :pacer, :user_id
 
     def initialize(attributes = nil, competition_result: CompetitionResult.new)
         @competition_result = competition_result
@@ -10,12 +10,23 @@ class CompetitionResultForm
     end
 
     def save
-        competition_result = CompetitionResult.create(event_type: event_type, name: name, venue: venue, date: date, memo: memo)
-
         ActiveRecord::Base.transaction do
+        @competition_result = CompetitionResult.create!(
+            event_type: event_type,
+            name: name,
+            venue: venue,
+            date: date,
+            memo: memo,
+            user_id: user_id
+        )
+
+
             case event_type
             when 'sprint'
-                Sprint.create(competition_results_id: competition_result.id, record: record, wind_speed: wind_speed)
+                @competition_result.sprints.build(
+                    record: record,
+                    wind_speed: wind_speed
+                ).save!
             # when 'middle_and_long'
             #     MiddleAndLong.create(competition_results_id: competition_result_id, record: record, lap_time: lap_time, pacer: pacer)
             # when 'jump'
@@ -25,6 +36,8 @@ class CompetitionResultForm
             # when 'combined'
             #     Combined.create(competition_results_id: competition_result_id, record: record, wind_speed: wind_speed, lap_time: lap_time, approach: approach)
             end
+        rescue => e
+            return false
         end
     end
 
@@ -36,7 +49,8 @@ class CompetitionResultForm
             name: @competition_result.name,
             venue: @competition_result.venue,
             date: @competition_result.date,
-            memo: @competition_result.memo
+            memo: @competition_result.memo,
+            user_id: @competition_result.user_id
         }
     end
 end

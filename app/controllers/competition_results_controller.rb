@@ -1,23 +1,23 @@
 class CompetitionResultsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_competition_result, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_event_type, only: [ :new, :create ]
 
   def index
     @competition_results = CompetitionResult.with_sprint.where(user_id: current_user.id).order(date: :DESC)
   end
 
   def new
-    @competition_result = CompetitionResultForm.new
-    @event_type = CompetitionResult.event_types.keys.map { |k| [I18n.t("enum.competition_result.event_type.#{k}"), k] }
+    @competition_result_form = CompetitionResultForm.new
   end
 
   def create
-    @competition_result = CompetitionResultForm.new(competition_result_params)
+    @competition_result_form = CompetitionResultForm.new(competition_result_params)
 
-    if @competition_result.save
+    if @competition_result_form.save
       redirect_to competition_results_path
     else
-      render new_competition_result_path
+      render :new
     end
   end
 
@@ -50,6 +50,10 @@ class CompetitionResultsController < ApplicationController
     end
 
     def competition_result_params
-      params.require(:competition_result_form).permit(:name, :venue, :date, :memo, :event_type, :record, :wind_speed, :lap_time, :approach, :pacer)
+      params.require(:competition_result_form).permit(:competition_result_id, :name, :venue, :date, :memo, :event_type, :record, :wind_speed, :lap_time, :approach, :pacer).merge(user_id: current_user.id)
+    end
+
+    def set_event_type
+      @event_type = CompetitionResult.event_types.keys.map { |k| [k, k] }
     end
 end
