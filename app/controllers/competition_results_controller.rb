@@ -50,7 +50,7 @@ class CompetitionResultsController < ApplicationController
     end
 
     def competition_result_params
-      params.require(:competition_result_form).permit(:competition_result_id, :name, :venue, :date, :memo, :event_type, :record, :wind_speed, :lap_time, :approach, :pacer).merge(user_id: current_user.id)
+      params.require(:competition_result_form).permit(:competition_result_id, :name, :venue, :date, :memo, :event_type, :sprint_record, :sprint_wind_speed, :lap_time, :approach, :pacer).merge(user_id: current_user.id)
     end
 
     def set_event_type
