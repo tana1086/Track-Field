@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_02_12_095449) do
+ActiveRecord::Schema[7.2].define(version: 2025_02_20_122857) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,6 +24,36 @@ ActiveRecord::Schema[7.2].define(version: 2025_02_12_095449) do
     t.datetime "updated_at", null: false
     t.integer "event_type", default: 0
     t.index ["user_id"], name: "index_competition_results_on_user_id"
+  end
+
+  create_table "jumpings", force: :cascade do |t|
+    t.float "record", null: false
+    t.float "wind_speed", null: false
+    t.float "approach_distance"
+    t.integer "jumping_detail", null: false
+    t.bigint "competition_result_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["competition_result_id"], name: "index_jumpings_on_competition_result_id"
+  end
+
+  create_table "lap_times", force: :cascade do |t|
+    t.float "time"
+    t.integer "distance"
+    t.bigint "middle_and_long_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["middle_and_long_id"], name: "index_lap_times_on_middle_and_long_id"
+  end
+
+  create_table "middle_and_longs", force: :cascade do |t|
+    t.float "record", null: false
+    t.string "pacer"
+    t.integer "middle_and_long_detail", null: false
+    t.bigint "competition_result_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["competition_result_id"], name: "index_middle_and_longs_on_competition_result_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -51,7 +81,18 @@ ActiveRecord::Schema[7.2].define(version: 2025_02_12_095449) do
     t.bigint "competition_result_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "sprint_detail"
     t.index ["competition_result_id"], name: "index_sprints_on_competition_result_id"
+  end
+
+  create_table "throwings", force: :cascade do |t|
+    t.float "record", null: false
+    t.float "approach_distance"
+    t.integer "throwing_detail", null: false
+    t.bigint "competition_result_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["competition_result_id"], name: "index_throwings_on_competition_result_id"
   end
 
   create_table "users", force: :cascade do |t|

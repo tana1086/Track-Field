@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  record: 1.5
+  lap_time: 1.5
+  pacer: MyString
+
+two:
+  record: 1.5
+  lap_time: 1.5
+  pacer: MyString
