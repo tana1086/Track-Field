@@ -3,7 +3,7 @@
     <div class="top-10">ヘッダー</div>
   <% end %>
 
-  <% if @profile.id.present? %>
+  <% if @profile&.id.present? %>
     <%= link_to profile_path(@profile) do %>
       <div class="bottom-4 flex items-center">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-11">
@@ -12,6 +12,6 @@
       </div>
     <% end %>
   <% else %>
-    <%= link_to 'ログイン', user_session_path, class: "bottom-4 flex items-center" %>
+    <%= link_to 'プロフィール作成', new_profile_path, class: "bottom-4 flex items-center" %>
   <% end %>
 </div>
