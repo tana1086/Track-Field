@@ -9,22 +9,22 @@
 
       <div id="select" class="form sprint grid grid-cols-2 items-center" style="visibility: hidden; position: absolute;">
         <%= f.label :sprint_detail, '詳細※', class: "mr-4" %>
-        <%= f.select :sprint_detail, Sprint.sprint_details.keys.map {|k| [k, k]}, { include_blank: "選択してください"}, { id: 'event_detail_select', class: 'border border-gray-300 p-1 rounded sprint-field'} %>
+        <%= f.select :sprint_detail, Sprint.sprint_details.keys.map { |k| [ k, k ] }, { include_blank: "選択してください"}, { id: 'event_detail_select', class: 'border border-gray-300 p-1 rounded sprint-field'} %>
       </div>
 
       <div id="select" class="form middle-and-long grid grid-cols-2 items-center" style="visibility: hidden; position: absolute;">
         <%= f.label :middle_and_long_detail, '詳細※', class: "mr-4" %>
-        <%= f.select :middle_and_long_detail, MiddleAndLong.middle_and_long_details.keys.map {|k| [k, k]}, { include_blank: "選択してください"}, { id: 'event_detail_select', class: 'border border-gray-300 p-1 rounded middle-and-long-field'} %>
+        <%= f.select :middle_and_long_detail, MiddleAndLong.middle_and_long_details.keys.map { |k| [ k, k ] }, { include_blank: "選択してください"}, { id: 'event_detail_select', class: 'border border-gray-300 p-1 rounded middle-and-long-field'} %>
       </div>
 
       <div id="select" class="form jumping grid grid-cols-2 items-center" style="visibility: hidden; position: absolute;">
         <%= f.label :jumping_detail, '詳細※', class: "mr-4" %>
-        <%= f.select :jumping_detail, Jumping.jumping_details.keys.map {|k| [k, k]}, { include_blank: "選択してください"}, { id: 'event_detail_select', class: 'border border-gray-300 p-1 rounded jumping-field'} %>
+        <%= f.select :jumping_detail, Jumping.jumping_details.keys.map { |k| [ k, k ] }, { include_blank: "選択してください"}, { id: 'event_detail_select', class: 'border border-gray-300 p-1 rounded jumping-field'} %>
       </div>
 
       <div id="select" class="form throwing grid grid-cols-2 items-center" style="visibility: hidden; position: absolute;">
         <%= f.label :throwing_detail, '詳細※', class: "mr-4" %>
-        <%= f.select :throwing_detail, Throwing.throwing_details.keys.map {|k| [k, k]}, { include_blank: "選択してください"}, { id: 'event_detail_select', class: 'border border-gray-300 p-1 rounded throwing-field'} %>
+        <%= f.select :throwing_detail, Throwing.throwing_details.keys.map { |k| [ k, k ] }, { include_blank: "選択してください"}, { id: 'event_detail_select', class: 'border border-gray-300 p-1 rounded throwing-field'} %>
       </div>
 
       <div class="grid grid-cols-2  items-center">

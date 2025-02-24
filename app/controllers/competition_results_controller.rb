@@ -17,7 +17,7 @@ class CompetitionResultsController < ApplicationController
     @competition_result_form = CompetitionResultForm.new(competition_result_params)
 
     if @competition_result_form.save
-      redirect_to competition_results_path, notice: '記録が登録されました！'
+      redirect_to competition_results_path, notice: "記録が登録されました！"
     else
       render :new
     end
@@ -51,7 +51,7 @@ class CompetitionResultsController < ApplicationController
 
     def set_competition_result
       @competition_result = current_user.competition_results.includes(
-        :sprints, :middle_and_longs, {middle_and_longs: :lap_times}, :jumpings, :throwings)
+        :sprints, :middle_and_longs, { middle_and_longs: :lap_times }, :jumpings, :throwings)
         .find(params[:id])
     end
 
@@ -67,6 +67,6 @@ class CompetitionResultsController < ApplicationController
     end
 
     def set_event_type
-      @event_type = CompetitionResult.event_types.keys.map { |k| [k, k] }
+      @event_type = CompetitionResult.event_types.keys.map { |k| [ k, k ] }
     end
 end

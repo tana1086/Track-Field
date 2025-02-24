@@ -39,24 +39,24 @@ class CompetitionResultForm
 
     validates :event_type, presence: true
 
-    with_options if: -> {event_type == 'sprint'} do
+    with_options if: -> { event_type == "sprint" } do
         validates :sprint_detail, presence: true
         validates :sprint_record, presence: true
         validates :sprint_wind_speed, presence: true
     end
 
-    with_options if: -> {event_type == 'middle_and_long'} do
+    with_options if: -> { event_type == "middle_an d_long"} do
         validates :middle_and_long_detail, presence: true
         validates :middle_and_long_record, presence: true
     end
 
-    with_options if: -> {event_type == 'jumping'} do
+    with_options if: -> { event_type == "jumping"}  do
         validates :jumping_detail, presence: true
         validates :jumping_record, presence: true
         validates :jumping_wind_speed, presence: true
     end
 
-    with_options if: -> {event_type == 'throwing'} do
+    with_options if: -> { event_type == "throwing" } do
         validates :throwing_detail, presence: true
         validates :throwing_record, presence: true
     end
@@ -86,13 +86,13 @@ class CompetitionResultForm
 
 
             case event_type
-            when 'sprint'
+            when "sprint"
                 @competition_result.sprints.build(
                     sprint_detail: sprint_detail,
                     record: sprint_record,
                     wind_speed: sprint_wind_speed
                 ).save!
-            when 'middle_and_long'
+            when "middle_and_long"
                 @middle_and_long =  @competition_result.middle_and_longs.build(
                     middle_and_long_detail: middle_and_long_detail,
                     record: middle_and_long_record,
@@ -103,14 +103,14 @@ class CompetitionResultForm
                     distance: lap_distance
                 )
                 @middle_and_long.save!
-            when 'jumping'
+            when "jumping"
                 @competition_result.jumpings.build(
                     jumping_detail: jumping_detail,
                     record: jumping_record,
                     wind_speed: jumping_wind_speed,
                     approach_distance: jumping_approach_distance
                     ).save!
-            when 'throwing'
+            when "throwing"
                 @competition_result.throwings.build(
                     throwing_detail: throwing_detail,
                     record: throwing_record,
@@ -134,13 +134,13 @@ class CompetitionResultForm
             )
 
             case @competition_result.event_type
-            when 'sprint'
+            when "sprint"
                 @competition_result.sprints.update!(
                     sprint_detail: sprint_detail,
                     record: sprint_record,
                     wind_speed: sprint_wind_speed
                 )
-            when 'middle_and_long'
+            when "middle_and_long"
                 @middle_and_long =  @competition_result.middle_and_longs.update!(
                     middle_and_long_detail: middle_and_long_detail,
                     record: middle_and_long_record,
@@ -150,14 +150,14 @@ class CompetitionResultForm
                     time: lap_time,
                     distance: lap_distance
                 )
-            when 'jumping'
+            when "jumping"
                 @competition_result.jumpings.update!(
                     jumping_detail: jumping_detail,
                     record: jumping_record,
                     wind_speed: jumping_wind_speed,
                     approach_distance: jumping_approach_distance
                     )
-            when 'throwing'
+            when "throwing"
                 @competition_result.throwings.update!(
                     throwing_detail: throwing_detail,
                     record: throwing_record,
@@ -174,22 +174,22 @@ class CompetitionResultForm
     attr_reader :competition_result
 
     def default_attributes
-        attributes = {
-          event_type: competition_result.event_type,
+        attributes = { 
+          event_type: c ompetition_result.event_type,
           name: competition_result.name,
           venue: competition_result.venue,
           date: competition_result.date,
           memo: competition_result.memo
         }
 
-        if competition_result.event_type == 'sprint'
+        if competition_result.event_type == "sprint"
           sprint = competition_result.sprints.first
           attributes.merge!(
             sprint_detail: sprint&.sprint_detail,
             sprint_record: sprint&.record,
             sprint_wind_speed: sprint&.wind_speed
             )
-        elsif competition_result.event_type == 'middle_and_long'
+        elsif competition_result.event_type == "middle_and_long"
             middle_and_long = competition_result.middle_and_longs.first
             attributes.merge!(
             middle_and_long_detail: middle_and_long&.middle_and_long_detail,
@@ -198,7 +198,7 @@ class CompetitionResultForm
             lap_time: middle_and_long&.lap_times.first&.time,
             lap_distance: middle_and_long&.lap_times.first&.distance
             )
-        elsif competition_result.event_type == 'jumping'
+        elsif competition_result.event_type == "jumping"
             jumping = competition_result.jumpings.first
             attributes.merge!(
             jumping_detail: jumping&.jumping_detail,
@@ -206,7 +206,7 @@ class CompetitionResultForm
             jumping_wind_speed: jumping&.wind_speed,
             jumping_approach_distance: competition_result.jumpings.first&.approach_distance
             )
-        elsif competition_result.event_type == 'throwing'
+        elsif competition_result.event_type == "throwing"
             throwing = competition_result.throwings.first
             attributes.merge!(
             throwing_detail: throwing&.throwing_detail,
