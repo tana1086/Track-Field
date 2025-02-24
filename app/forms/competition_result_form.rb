@@ -33,7 +33,7 @@ class CompetitionResultForm
 
     # 混成
 
-    #ラップタイム
+    # ラップタイム
     attribute :lap_time, :float
     attribute :lap_distance, :integer
 
@@ -45,12 +45,12 @@ class CompetitionResultForm
         validates :sprint_wind_speed, presence: true
     end
 
-    with_options if: -> { event_type == "middle_an d_long"} do
+    with_options if: -> { event_type == "middle_an d_long" } do
         validates :middle_and_long_detail, presence: true
         validates :middle_and_long_record, presence: true
     end
 
-    with_options if: -> { event_type == "jumping"}  do
+    with_options if: -> { event_type == "jumping" }  do
         validates :jumping_detail, presence: true
         validates :jumping_record, presence: true
         validates :jumping_wind_speed, presence: true
@@ -174,8 +174,8 @@ class CompetitionResultForm
     attr_reader :competition_result
 
     def default_attributes
-        attributes = { 
-          event_type: c ompetition_result.event_type,
+        attributes = {
+          event_type: competition_result.event_type,
           name: competition_result.name,
           venue: competition_result.venue,
           date: competition_result.date,
