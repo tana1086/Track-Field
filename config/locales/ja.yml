@@ -1,0 +1,10 @@
+ja:
+  enum:
+    competition_result:
+      event_type:
+        no_event: "種目を選択してください"
+        sprint: "短距離"
+        middle_and_long: "中長距離"
+        jump: "跳躍"
+        throwing: "投擲"
+        combined: "混成"

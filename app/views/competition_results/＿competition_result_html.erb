@@ -1,0 +1,8 @@
+<% @competition_results.each do |result|%>
+    <p>大会名:<%= result.name %></p>
+    <p>開催場所：<%= result.venue %></p>
+    <p>開催日：<%= result.date%></p>
+    <p>メモ：<%= result.memo %></p>
+    <br>
+    <br>
+<% end %>
