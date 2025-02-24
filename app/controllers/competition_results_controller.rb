@@ -1,10 +1,12 @@
 class CompetitionResultsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_competition_result, only: [ :show, :edit, :update, :destroy ]
-  before_action :set_event_type, only: [ :new, :create ]
+  before_action :set_event_type, only: [ :new, :create, :show, :edit, :update ]
 
   def index
-    @competition_results = CompetitionResult.with_sprint.where(user_id: current_user.id).order(date: :DESC)
+    @competition_results = CompetitionResult.includes(:sprints, :middle_and_longs, :jumpings, :throwings)
+                                            .where(user_id: current_user.id)
+                                            .order(date: :DESC)
   end
 
   def new
@@ -15,7 +17,7 @@ class CompetitionResultsController < ApplicationController
     @competition_result_form = CompetitionResultForm.new(competition_result_params)
 
     if @competition_result_form.save
-      redirect_to competition_results_path
+      redirect_to competition_results_path, notice: '記録が登録されました！'
     else
       render :new
     end
@@ -25,15 +27,17 @@ class CompetitionResultsController < ApplicationController
   end
 
   def edit
-    @competition_result_form = CompetitionResultFrom.new(competition_result: @competition_result)
+    @competition_result_form = CompetitionResultForm.new(competition_result: @competition_result)
   end
 
 
   def update
-    if CompetitionResultForm.new(competition_result: @competition_result)
+    @competition_result_form = CompetitionResultForm.new(competition_result_params, competition_result: @competition_result)
+
+    if @competition_result_form.update
       redirect_to @competition_result
     else
-      render edit_competition_result_path(@competition_result)
+      render :edit
     end
   end
 
@@ -46,11 +50,20 @@ class CompetitionResultsController < ApplicationController
   private
 
     def set_competition_result
-      @competition_result = CompetitionResult.find(params[:id])
+      @competition_result = current_user.competition_results.includes(
+        :sprints, :middle_and_longs, {middle_and_longs: :lap_times}, :jumpings, :throwings)
+        .find(params[:id])
     end
 
     def competition_result_params
-      params.require(:competition_result_form).permit(:competition_result_id, :name, :venue, :date, :memo, :event_type, :sprint_record, :sprint_wind_speed, :lap_time, :approach, :pacer).merge(user_id: current_user.id)
+      params.require(:competition_result_form).permit(
+        :competition_result_id, :event_type, :name, :venue, :date, :memo,
+        :sprint_detail, :sprint_record, :sprint_wind_speed,
+        :middle_and_long_detail, :middle_and_long_record, :pacer,
+        :jumping_detail, :jumping_record, :jumping_wind_speed, :jumping_approach_distance,
+        :throwing_detail, :throwing_record, :throwing_approach_distance,
+        :lap_time, :lap_distance
+        ).merge(user_id: current_user.id)
     end
 
     def set_event_type
