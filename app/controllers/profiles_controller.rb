@@ -37,25 +37,25 @@ class ProfilesController < ApplicationController
 
     # @data = [["hoge", 50], ["fuga", 30]]
 
-    if event_category == '短距離'
+    if event_category == "短距離"
       results = current_user.competition_results.joins(:sprints)
-                                                .where( sprints: { sprint_detail: event_category_detail })
-                                                .pluck('competition_results.date', 'sprints.record')
-    elsif event_category == '中長距離'
+                                                .where(sprints: { sprint_detail: event_category_detail })
+                                                .pluck("competition_results.date", "sprints.record")
+    elsif event_category == "中長距離"
       results = current_user.competition_results.joins(:middle_and_longs)
-                                                .where( middle_and_longs: { middle_and_long_detail: event_category_detail })
-                                                .pluck('competition_results.date', 'middle_and_longs.record')
-    elsif event_category == '跳躍'
+                                                .where(middle_and_longs: { middle_and_long_detail: event_category_detail })
+                                                .pluck("competition_results.date", "middle_and_longs.record")
+    elsif event_category == "跳躍"
       results = current_user.competition_results.joins(:jumpings)
                                                 .where(jumpings: { jumping_detail: event_category_detail })
-                                                .pluck('competition_results.date', 'jumpings.record')
-    elsif event_category == '投てき'
+                                                .pluck("competition_results.date", "jumpings.record")
+    elsif event_category == "投てき"
       results = current_user.competition_results.joins(:throwings)
                                                 .where(throwings: { throwing_detail: event_category_detail })
-                                                .pluck('competition_results.date', 'throwings.record')
+                                                .pluck("competition_results.date", "throwings.record")
     end
 
-    render json: { results: results}
+    render json: { results: results }
   end
 
   private
