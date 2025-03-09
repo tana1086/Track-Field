@@ -9,4 +9,20 @@
 <%= link_to '編集', edit_profile_path(@profile) %>
 
 <br>
+
+<div data-controller="select-event">
+  <%= form_with url: profile_path(@user), method: :get, local: false, data: { target: "select-event.form" } do |f| %>
+    <% f.label :event %>
+    <%= f.select :event, ['短距離', '中長距離', '跳躍', '投てき'], {prompt: "カテゴリーを選択してください"}, { data: { action: "change->select-event#changeDetail", target: "select-event.event" } } %>
+
+    <% f.label :event_detail %>
+    <%= f.select :event_detail, [], {prompt: "種目を選択してください"}, { data: { action: "change->select-event#updateChart", target: "select-event.eventDetail" } } %>
+  <% end %>
+  <br>
+  <br>
+  <p>シーズン推移</p>
+  <canvas data-select-event-target="chart"></canvas>
+</div>
+  <br>
+  <br>
 <%= link_to '投稿一覧へ', posts_path %>

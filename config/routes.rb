@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :posts
-  resources :profiles, only: [ :new, :create, :show, :edit, :update ]
+  resources :profiles, only: [ :new, :create, :show, :edit, :update ] do
+    collection do
+      get :fetch_data
+    end
+  end
   resources :competition_results
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
