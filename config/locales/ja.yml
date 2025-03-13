@@ -1,10 +1,62 @@
 ja:
-  enum:
-    competition_result:
-      event_type:
-        no_event: "種目を選択してください"
-        sprint: "短距離"
-        middle_and_long: "中長距離"
-        jump: "跳躍"
-        throwing: "投擲"
-        combined: "混成"
+  activerecord:
+    attributes:
+      competition_result_form:
+        sprint_detail: "スプリント詳細"
+        sprint_record: "記録"
+        sprint_wind_speed: "風速"
+      sprint:
+        sprint_details:
+          m_100: "100m"
+          m_200: "200m"
+          m_400: "400m"
+          m_100H: 100mH
+          m_110H: 110mH
+          m_400H: 400mH
+      middle_and_long:
+        middle_and_long_details:
+          m_800: 800m
+          m_1500: 1500m
+          m_3000: 3000m
+          m_5000: 5000m
+          m_10000: 10000m
+          m_3000sc: 3000sc
+      jumping:
+        jumping_details:
+          long_jump: 走り幅跳び
+          triple_jump: 三段跳び
+          high_jump: 走り高跳び
+          pole_vault: 棒高跳び
+      throwing:
+        throwing_details:
+          shot_put: 砲丸投げ
+          discus_throw: 円盤投げ
+          hammer_throw: ハンマー投げ
+          javelin_throw: やり投げ
+      profile:
+        name: 名前
+        icon: アイコン
+        areas: 都道府県
+        event: 専門種目
+        goal: 目標
+        self_introduction: 自己紹介
+      post:
+        title: タイトル
+  activemodel:
+    attributes:
+      competition_result_form:
+        name: 大会名
+        date: 日付
+        event_type: カテゴリー
+        sprint_detail: 種目
+        sprint_record: 記録
+        sprint_wind_speed: 風速
+        middle_and_long_detail: 種目
+        middle_and_long_record: 記録
+        jumping_detail: 種目
+        jumping_record: 記録
+        jumping_wind_speed: 風速
+        jumping_approach_distance: 助走距離
+        throwing_detail: 種目
+        throwing_record: 記録
+        throwing_approach_distance: 助走距離

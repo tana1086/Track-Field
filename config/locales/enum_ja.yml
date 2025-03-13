@@ -1,0 +1,36 @@
+ja:
+  enums:
+    competition_result:
+      event_type:
+        sprint: 短距離
+        middle_and_long: 中長距離
+        jumping: 跳躍
+        throwing: 投てき
+    sprint:
+      sprint_detail:
+        m_100: 100m
+        m_200: 200m
+        m_400: 400m
+        m_100H: 100mH
+        m_110H: 110mH
+        m_400H: 400mH
+    middle_and_long:
+      middle_and_long_detail:
+        m_800: 800m
+        m_1500: 1500m
+        m_3000: 3000m
+        m_5000: 5000m
+        m_10000: 10000m
+        m_3000sc: 3000sc
+    jumping:
+      jumping_detail:
+        long_jump: 走り幅跳び
+        triple_jump: 三段跳び
+        high_jump: 走り高跳び
+        pole_vault: 棒高跳び
+    throwing:
+      throwing_detail:
+        shot_put: 砲丸投げ
+        discus_throw: 円盤投げ
+        hammer_throw: ハンマー投げ
+        javelin_throw: やり投げ

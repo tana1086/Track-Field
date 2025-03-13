@@ -24,13 +24,10 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
 
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to @post, notice: "Post was successfully created." }
-
-      else
-        render new_post_path, status: :unprocessable_entity
-      end
+    if @post.save
+      redirect_to @post, notice: "新しい投稿が作成されました！"
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -38,7 +35,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: "Post was successfully updated." }
+        format.html { redirect_to @post, notice: "投稿が更新されました！" }
       else
         render :edit, status: :unprocessable_entity
       end
@@ -50,7 +47,7 @@ class PostsController < ApplicationController
     @post.destroy!
 
     respond_to do |format|
-      format.html { redirect_to posts_path, status: :see_other, notice: "Post was successfully destroyed." }
+      format.html { redirect_to posts_path, status: :see_other, notice: "投稿が削除されました！" }
     end
   end
 

@@ -1,10 +1,12 @@
-<p style="color: green"><%= notice %></p>
+<p class="text-green-500 mb-4"><%= notice %></p>
 
-<%= render @post %>
+<div class="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-lg my-6">
+  <%= render @post %>
 
-<div>
-  <%= link_to "Edit this post", edit_post_path(@post) %> |
-  <%= link_to "Back to posts", posts_path %>
+  <div class="mt-6 text-center">
+    <%= link_to "編集", edit_post_path(@post), class: "text-blue-500 hover:text-blue-700 mx-2" %> |
+    <%= link_to "投稿一覧へ", posts_path, class: "text-blue-500 hover:text-blue-700 mx-2" %>
 
-  <%= button_to "Destroy this post", @post, method: :delete %>
+    <%= button_to "削除", @post, method: :delete, data: { confirm: "削除してよろしいですか？" },  class: "bg-red-500 text-white py-2 px-4 rounded-lg mt-4 hover:bg-red-600 transition" %>
+  </div>
 </div>

@@ -1,22 +1,13 @@
-<%= form_with(model: post) do |form| %>
-  <% if post.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<%= form_with(model: @post, local: true, data: { turbo: false }) do |form| %>
+  <%= render 'shared/error_messages', object: form.object %>
 
-      <ul>
-        <% post.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+  <div class="mb-4">
+    <%= form.label :title, class: "block text-lg font-semibold mb-2" %>
+    <%= form.text_field :title, class: "w-full p-2 border border-gray-300 rounded-md" %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="mt-6 text-center">
+    <%= form.submit class: "px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition" %>
   </div>
 <% end %>
+

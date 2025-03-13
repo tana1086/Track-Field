@@ -2,18 +2,26 @@
 
 <% content_for :title, "Posts" %>
 
-<h1>Posts</h1>
+<h1 class="text-center text-3xl relative">投稿一覧</h1>
+<div class="text-right mb-4">
+  <%= link_to '新規投稿', new_post_path, class: " py-2 px-4 rounded bg-blue-500 text-white hover:bg-white-400" %>
+</div>
+<div class="border-b border-gray-300 mb-6"></div>
 
-<div id="posts">
-  <% @posts.each do |post| %>
-    <%= render post %>
-    <p>
-      <%= link_to "Show this post", post %>
-    </p>
-  <% end %>
+
+<div id="posts" class="container mx-auto px-4 md:px-12">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <% @posts.each do |post| %>
+      <div class="border border-gray-300 rounded-lg bg-white shadow-md p-4">
+        <%= render post %>
+        <p class="text-right">
+          <%= link_to "詳細", post, class: "py-1 px-2 rounded bg-blue-400 text-white" %>
+        </p>
+      </div>
+    <% end %>
+  </div>
 </div>
 
-<%= link_to "New post", new_post_path %>
+
 
 <br>
-<%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }  %>

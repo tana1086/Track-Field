@@ -38,27 +38,31 @@ class CompetitionResultForm
     attribute :lap_distance, :integer
 
     validates :event_type, presence: true
+    validates :name, presence: true
+    validates :date, presence: true
 
     with_options if: -> { event_type == "sprint" } do
         validates :sprint_detail, presence: true
-        validates :sprint_record, presence: true
-        validates :sprint_wind_speed, presence: true
+        validates :sprint_record, presence: true, numericality: { greater_than_or_equal_to: 10 }
+        validates :sprint_wind_speed, presence: true, numericality: { greater_than: -15, less_than: 15 }
     end
 
-    with_options if: -> { event_type == "middle_an d_long" } do
+    with_options if: -> { event_type == "middle_and_long" } do
         validates :middle_and_long_detail, presence: true
-        validates :middle_and_long_record, presence: true
+        validates :middle_and_long_record, presence: true, numericality: { greater_than_or_equal_to: 0 }
     end
 
     with_options if: -> { event_type == "jumping" }  do
         validates :jumping_detail, presence: true
-        validates :jumping_record, presence: true
-        validates :jumping_wind_speed, presence: true
+        validates :jumping_record, presence: true, numericality: { greater_than_or_equal_to: 3 }
+        validates :jumping_wind_speed, presence: true, numericality: { greater_than: -15, less_than: 15 }
+        validates :jumping_approach_distance, numericality: { greater_than_or_equal_to: 0 }
     end
 
     with_options if: -> { event_type == "throwing" } do
         validates :throwing_detail, presence: true
-        validates :throwing_record, presence: true
+        validates :throwing_record, presence: true, numericality: { greater_than_or_equal_to: 0 }
+        validates :throwing_approach_distance, numericality: { greater_than_or_equal_to: 0 }
     end
 
 

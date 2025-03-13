@@ -1,28 +1,57 @@
-<h1> プロフィール </h1>
+<div class="bg-white shadow-lg rounded-lg p-6 w-full max-w-lg mx-auto mt-4">
+  <h2 class="text-xl font-bold text-center border-b pb-2 mb-4">プロフィール</h2>
 
-<div>名前：<%= current_user.profile.name %></div>
-<div>所属地：<%= current_user.profile.areas %></div>
-<div>専門種目：<%= current_user.profile.event %></div>
-<div>目標：<%= current_user.profile.goal %></div>
-<div>自己紹介：<%= current_user.profile.self_introduction %></div>
+  <div class="space-y-4">
+    <div class="flex gap-2 items-center">
+      <span class="font-semibold">名前：</span>
+      <span><%= current_user.profile.name %></span>
+    </div>
+    <div class="flex gap-2 items-center">
+      <span class="font-semibold">所属地：</span>
+      <span><%= current_user.profile.areas %></span>
+    </div>
+    <div class="flex gap-2 items-center">
+      <span class="font-semibold">専門種目：</span>
+      <span><%= current_user.profile.event %></span>
+    </div>
+    <div class="flex gap-2 items-center">
+      <span class="font-semibold">目標：</span>
+      <span><%= current_user.profile.goal %></span>
+    </div>
+    <div>
+      <span class="font-semibold">自己紹介：</span>
+      <p class="mt-1 bg-gray-100 p-3 rounded-md"><%= current_user.profile.self_introduction %></p>
+    </div>
+  </div>
 
-<%= link_to '編集', edit_profile_path(@profile) %>
+  <div class="text-center mt-6">
+    <%= link_to '編集', edit_profile_path(@profile), class: "inline-block bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition" %>
+  </div>
+</div>
 
 <br>
 
-<div data-controller="select-event">
-  <%= form_with url: profile_path(@user), method: :get, local: false, data: { target: "select-event.form" } do |f| %>
-    <% f.label :event %>
-    <%= f.select :event, ['短距離', '中長距離', '跳躍', '投てき'], {prompt: "カテゴリーを選択してください"}, { data: { action: "change->select-event#changeDetail", target: "select-event.event" } } %>
+<div data-controller="select-event" class="bg-white shadow-lg rounded-lg p-6 w-full max-w-lg mx-auto">
+  <h2 class="text-xl font-bold text-center border-b pb-2 mb-4">種目選択</h2>
 
-    <% f.label :event_detail %>
-    <%= f.select :event_detail, [], {prompt: "種目を選択してください"}, { data: { action: "change->select-event#updateChart", target: "select-event.eventDetail" } } %>
+  <%= form_with url: profile_path(@user), method: :get, local: false, data: { target: "select-event.form" }, class: "space-y-4" do |f| %>
+    <div>
+      <%= f.label :event, "カテゴリー", class: "block font-semibold mb-1" %>
+      <%= f.select :event, ['短距離', '中長距離', '跳躍', '投てき'], { prompt: "カテゴリーを選択してください" },
+            { class: "w-full border border-gray-300 p-2 rounded-md",
+              data: { action: "change->select-event#changeDetail", target: "select-event.event" } } %>
+    </div>
+
+    <div>
+      <%= f.label :event_detail, "種目", class: "block font-semibold mb-1" %>
+      <%= f.select :event_detail, [], { prompt: "種目を選択してください" },
+            { class: "w-full border border-gray-300 p-2 rounded-md",
+              data: { action: "change->select-event#updateChart", target: "select-event.eventDetail" } } %>
+    </div>
   <% end %>
-  <br>
-  <br>
-  <p>シーズン推移</p>
-  <canvas data-select-event-target="chart"></canvas>
+
+  <div class="mt-6 mb-12">
+    <h3 class="text-lg font-bold text-center">シーズン推移</h3>
+    <canvas data-select-event-target="chart" class="w-full mt-4"></canvas>
+  </div>
 </div>
-  <br>
-  <br>
-<%= link_to '投稿一覧へ', posts_path %>

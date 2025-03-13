@@ -16,21 +16,45 @@ export default class extends Controller {
 
     let options = [];
     if (eventCategory === "短距離"){
-        options = [ "種目を選択してください", "m_100", "m_200", "m_400", "m_100m", "m_110H" ];
+        options = [ "種目を選択してください", "m_100", "m_200", "m_400", "m_100m", "m_110H", "m_400H" ];
     } else if (eventCategory === "中長距離"){
         options = [ "種目を選択してください", "m_800", "m_1500", "m_3000", "m_5000", "m_10000", "m_3000sc" ];
     } else if (eventCategory === "跳躍"){
-        options = [ "種目を選択してください", "幅跳び", "三段跳び", "高跳び", "棒高跳び" ];
+        options = [ "種目を選択してください", "long_jump", "triple_jump", "high_jump", "pole_vault" ];
     }else if(eventCategory === "投てき"){
-        options = [ "種目を選択してください", "砲丸投げ", "円盤投げ", "やり投げ" ];
+        options = [ "種目を選択してください", "shot_put", "discus_throw", "javelin_throw", "hammer_throw" ];
     }
+
+    //表示を日本語化
+    const eventNames = {
+        m_100: "100m",
+        m_200: "200m",
+        m_400: "400m",
+        m_100m: "100mH",
+        m_110H: "110mH",
+        m_400H: "400mH",
+        m_800: "800m",
+        m_1500: "1500m",
+        m_3000: "3000m",
+        m_5000: "5000m",
+        m_10000: "10000m",
+        m_3000sc: "3000mSC",
+        long_jump: "走り幅跳び",
+        triple_jump: "三段跳び",
+        high_jump: "走り高跳び",
+        pole_vault: "棒高跳び",
+        shot_put: "砲丸投げ",
+        discus_throw: "円盤投げ",
+        javelin_throw: "やり投げ",
+        hammer_throw: "ハンマー投げ"
+      };
 
     this.eventDetailTarget.innerHTML = '';
 
     options.forEach(option => {
       const opt = document.createElement("option");
       opt.value = option;
-      opt.textContent = option;
+      opt.textContent = eventNames[option] || option;
       this.eventDetailTarget.appendChild(opt);
     });
   }
