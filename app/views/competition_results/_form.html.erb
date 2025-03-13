@@ -1,5 +1,6 @@
 <div class="flex items-center justify-center">
   <%= form_with model: @competition_result_form, url: (@competition_result_form.persisted? ? competition_result_path(@competition_result) : competition_results_path), data: { turbo: false } do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
     <div class="text-center max-w-4xl mx-auto grid grid-cols-1 gap-4">
 
       <div id="select" class="grid grid-cols-2 items-center">

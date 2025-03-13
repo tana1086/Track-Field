@@ -17,9 +17,10 @@ class CompetitionResultsController < ApplicationController
     @competition_result_form = CompetitionResultForm.new(competition_result_params)
 
     if @competition_result_form.save
-      redirect_to competition_results_path, notice: "記録が登録されました！"
+      redirect_to competition_results_path, notice: "新しい記録が登録されました！"
     else
-      render :new
+      render :new, status: :unprocessable_entity
+
     end
   end
 
@@ -35,9 +36,9 @@ class CompetitionResultsController < ApplicationController
     @competition_result_form = CompetitionResultForm.new(competition_result_params, competition_result: @competition_result)
 
     if @competition_result_form.update
-      redirect_to @competition_result
+      redirect_to competition_result_path(@competition_result), notice: "更新しました"
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -67,6 +68,6 @@ class CompetitionResultsController < ApplicationController
     end
 
     def set_event_type
-      @event_type = CompetitionResult.event_types.keys.map { |k| [ k, k ] }
+      @event_type = CompetitionResult.event_types.keys.map { |k| [I18n.t("enums.competition_result.event_type.#{k}"), k ] }
     end
 end
