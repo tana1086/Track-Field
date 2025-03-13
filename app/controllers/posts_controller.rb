@@ -27,9 +27,8 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to @post, notice: "新しい投稿が作成されました！"
     else
-      render :new,status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
-
   end
 
   # PATCH/PUT /posts/1 or /posts/1.json

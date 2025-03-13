@@ -68,6 +68,6 @@ class CompetitionResultsController < ApplicationController
     end
 
     def set_event_type
-      @event_type = CompetitionResult.event_types.keys.map { |k| [I18n.t("enums.competition_result.event_type.#{k}"), k ] }
+      @event_type = CompetitionResult.event_types.keys.map { |k| [ I18n.t("enums.competition_result.event_type.#{k}"), k ] }
     end
 end
