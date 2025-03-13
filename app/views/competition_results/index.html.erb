@@ -1,3 +1,4 @@
+<p style="color: green"><%= notice %></p>
 <div class="text-3xl text-center justify-center">
 試合結果一覧
 </div>
@@ -12,6 +13,24 @@
     <div class="border border-gray-300 rounded-lg bg-white shadow-md p-4 w-full float-right">
       <p>開催日：<%= result.date%></p>
       <p>大会名：<%= result.name %></p>
+      <p>カテゴリー：<%= I18n.t("enums.competition_result.event_type.#{result.event_type}") %></p>
+      
+      <% if result.event_type == "sprint" %>
+        <p>種目：<%= I18n.t("enums.sprint.sprint_detail.#{result.sprints.first&.sprint_detail}") %></p>
+      <% end %>
+
+      <% if result.event_type == "middle_and_long" %>
+        <p>種目：<%= I18n.t("enums.middle_and_long.middle_and_long_detail.#{result.middle_and_longs.first&.middle_and_long_detail}") %></p>
+      <% end %>
+
+      <% if result.event_type == "jumping" %>
+        <p>種目：<%= I18n.t("enums.jumping.jumping_detail.#{result.jumpings.first&.jumping_detail}") %></p>
+      <% end %>
+
+      <% if result.event_type == "throwing" %>
+        <p>種目：<%= I18n.t("enums.throwing.throwing_detail.#{result.throwings.first&.throwing_detail}") %></p>
+      <% end %>
+
       <div class="text-right">
         <%= link_to '詳細', result, class: "py-1 px-2 rounded bg-blue-400" %>
       </div>
