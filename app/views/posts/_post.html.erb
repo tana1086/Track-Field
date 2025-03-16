@@ -1,7 +1,18 @@
 <div id="<%= dom_id post %>">
-  <p>
+  <div class="flex items-center mb-2">
+    <%if post.user&.profile&.avatar&.attached? %>
+      <%= image_tag post.user&.profile.avatar, class:"rounded-full w-8 h-8 object-cover" %>
+    <% else %>
+      <%= image_tag 'default.png', class:"rounded-full w-8 h-8 object-cover" %>
+    <% end %>
+    <% if post.user&.profile&.name.present? %>
+      <p><%= post.user.profile.name %></p>
+    <% else %>
+      <p>名前が未設定です</p>
+    <% end %>
+  </div>
     <strong>タイトル:</strong>
     <%= post.title %>
-  </p>
+    <br>
 
 </div>
