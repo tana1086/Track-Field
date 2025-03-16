@@ -35,13 +35,14 @@ ja:
           javelin_throw: やり投げ
       profile:
         name: 名前
-        icon: アイコン
+        avatar: アイコン
         areas: 都道府県
         event: 専門種目
         goal: 目標
         self_introduction: 自己紹介
       post:
         title: タイトル
+        image: 画像
   activemodel:
     attributes:
       competition_result_form:
