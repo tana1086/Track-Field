@@ -1,10 +1,11 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_post, only: %i[ show edit update destroy ]
+  before_action :set_post, only: %i[ show destroy ]
+  before_action :correct_post, only: %i[ edit update ]
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.includes(user: :profile).order(created_at: :desc)
   end
 
   # GET /posts/1 or /posts/1.json
@@ -22,7 +23,7 @@ class PostsController < ApplicationController
 
   # POST /posts or /posts.json
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.new(post_params)
 
     if @post.save
       redirect_to @post, notice: "新しい投稿が作成されました！"
@@ -59,6 +60,12 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title)
+      params.require(:post).permit(:title, :image)
+    end
+
+    def correct_post
+      @post = Post.find(params[:id])
+      @user = @post.user
+      redirect_to(posts_path) unless @user == current_user
     end
 end
