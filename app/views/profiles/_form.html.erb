@@ -5,12 +5,22 @@
     <%= f.text_field :name, class: "border border-gray-300 text-base p-2 w-full rounded-md" %>
   </div>
 
-  <div class="flex flex-col items-start space-y-2">
-    <%= f.label :icon, class: "text-lg font-medium" %>
-    <%= f.text_field :icon, class: "border border-gray-300 text-base p-2 w-full rounded-md" %>
+  <div>
+    <% if current_user&.profile&.avatar&.attached? %>
+      <%= f.label :avatar, class: "text-lg font-medium" %>
+      <%= image_tag current_user.profile.avatar, class:"rounded-full w-32 h-32 object-cover" %>
+      <div class="flex flex-col items-start space-y-2">
+        <%= f.file_field :avatar, class: "border border-gray-300 text-base p-2 w-full rounded-md mt-4" %>
+      </div>
+    <% else %>
+      <div class="flex flex-col items-start space-y-2">
+        <%= f.label :avatar, class: "text-lg font-medium" %>
+        <%= f.file_field :avatar, class: "border border-gray-300 text-base p-2 w-full rounded-md" %>
+      </div>
+    <% end %>
   </div>
 
-  <div class="flex flex-col items-start space-y-2">
+  <div class="flex flex-col items-start space-y-2  mt-10">
     <%= f.label :areas, class: "text-lg font-medium" %>
     <%= f.text_field :areas, class: "border border-gray-300 text-base p-2 w-full rounded-md" %>
   </div>
@@ -31,7 +41,7 @@
   </div>
 
   <div class="flex justify-center mt-4">
-    <%= f.submit "submit", class: "px-4 py-2 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 transition" %>
+    <%= f.submit class: "px-4 py-2 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 transition" %>
   </div>
 
 <% end %>
