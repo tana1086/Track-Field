@@ -3,7 +3,7 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: [ :edit, :update, :show ]
 
   def show
-    @user = User.find(params[:id])
+    @user = Profile.find(params[:id])
   end
 
   def new
@@ -65,6 +65,6 @@ class ProfilesController < ApplicationController
   end
 
   def  profile_params
-    params.require(:profile).permit(:name, :icon, :areas, :event, :goal, :self_introduction).merge(user_id: current_user.id)
+    params.require(:profile).permit(:name, :icon, :areas, :event, :goal, :self_introduction, :avatar).merge(user_id: current_user.id)
   end
 end

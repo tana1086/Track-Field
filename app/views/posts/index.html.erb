@@ -9,12 +9,15 @@
 <div class="border-b border-gray-300 mb-6"></div>
 
 
-<div id="posts" class="container mx-auto px-4 md:px-12">
+<div id="posts" class="container mx-auto px-4 md:px-12 pb-16">
   <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
     <% @posts.each do |post| %>
       <div class="border border-gray-300 rounded-lg bg-white shadow-md p-4">
         <%= render post %>
-        <p class="text-right">
+        <% if post.image.attached? %>
+          <%= image_tag post.image.variant(resize_and_pad: [100, 100]).processed, class: "item-center" %>
+        <% end %>
+        <p class="text-right mt-4">
           <%= link_to "詳細", post, class: "py-1 px-2 rounded bg-blue-400 text-white" %>
         </p>
       </div>
