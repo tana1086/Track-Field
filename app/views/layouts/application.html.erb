@@ -19,6 +19,19 @@
 
   <body>
     <%= render 'shared/header' %>
+
+    <% if notice.present?%>
+      <div class="flex justify-center">
+        <p class="notice text-center bg-green-400 rounded px-4 py-2"><%= notice %></p>
+      </div>
+    <% end %>
+
+    <% if alert.present?%>
+      <div class="flex justify-center">
+        <p class="alert text-center text-white bg-red-400 rounded px-4 py-2"><%= alert %></p>
+      </div>
+    <% end %>
+
     <%= yield %>
     <%= render 'shared/footer' %>
   </body>
