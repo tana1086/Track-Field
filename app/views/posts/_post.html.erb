@@ -14,5 +14,8 @@
     <strong>タイトル:</strong>
     <%= post.title %>
     <br>
+    <strong>内容:</strong>
+    <%= @show_page ? post.content : truncate(post.content, length: 15) %>
+    <br>
 
 </div>

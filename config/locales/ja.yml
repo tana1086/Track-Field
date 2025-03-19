@@ -43,6 +43,7 @@ ja:
       post:
         title: タイトル
         image: 画像
+        content: 内容
   activemodel:
     attributes:
       competition_result_form:

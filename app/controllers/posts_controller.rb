@@ -6,10 +6,12 @@ class PostsController < ApplicationController
   # GET /posts or /posts.json
   def index
     @posts = Post.includes(user: :profile).order(created_at: :desc)
+    @show_page = false
   end
 
   # GET /posts/1 or /posts/1.json
   def show
+    @show_page = true
   end
 
   # GET /posts/new
@@ -47,9 +49,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy!
 
-    respond_to do |format|
-      format.html { redirect_to posts_path, status: :see_other, notice: "投稿が削除されました！" }
-    end
+    redirect_to posts_path, status: :see_other, notice: "投稿が削除されました！"
   end
 
   private
@@ -60,7 +60,7 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :image)
+      params.require(:post).permit(:title, :image, :content)
     end
 
     def correct_post
