@@ -1,0 +1,22 @@
+<h2 class="text-center text-3xl mb-4">いいねを送った投稿一覧</h2>
+<div id="posts" class="container mx-auto px-4 md:px-12 pb-16">
+  <div class="flex justify-center mt-8">
+    <% if @like_posts.present? %>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <% @like_posts.each do |post| %>
+          <div class="border border-gray-300 rounded-lg bg-white shadow-md p-4 relative min-h-[150px]">
+            <%= render "posts/post", post: post %>
+            <% if post.image.attached? %>
+              <%= image_tag post.image.variant(resize_and_pad: [100, 100]).processed, class: "item-center" %>
+            <% end %>
+            <p class="text-right absolute bottom-4 right-4">
+              <%= link_to "詳細", post, class: "py-1 px-2 rounded bg-blue-400 text-white" %>
+            </p>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p class="text-gray-500 text-center">投稿にいいねを送るとこのページに表示されます。</p>
+    <% end %>
+  </div>
+</div>

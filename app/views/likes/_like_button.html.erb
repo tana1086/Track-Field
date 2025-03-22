@@ -1,0 +1,15 @@
+<turbo-frame id="like_button_<%= post.id %>">
+  <div class="w-full flex justify-end">
+    <% if post.like?(current_user) %>
+        <%= link_to post_like_path(post.id), method: :delete, data: { 'turbo-method': :delete} do %>
+        <span style="color:red;">♥</span>
+        <%= post.likes.count %>
+        <% end %>
+    <% else %>
+        <%= link_to post_like_path(post.id), method: :post, data: { 'turbo-method': :post} do %>
+        <span>♡</span>
+        <%= post.likes.count %>
+        <% end %>
+    <% end %>
+  </div>
+</turbo-frame>

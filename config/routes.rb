@@ -1,6 +1,18 @@
 Rails.application.routes.draw do
+  get "users/show"
+  get "users/likes"
   devise_for :users
-  resources :posts
+
+  resources :users do
+    member do
+      get :liked_posts
+    end
+  end
+
+  resources :posts do
+    resource :like, only: [ :create, :destroy ]
+  end
+
   resources :profiles, only: [ :new, :create, :show, :edit, :update ] do
     collection do
       get :fetch_data
