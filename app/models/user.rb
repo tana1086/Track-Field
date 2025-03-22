@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_one :profile
   has_many :posts
   has_many :competition_results
+  has_many :likes, dependent: :destroy
 end
