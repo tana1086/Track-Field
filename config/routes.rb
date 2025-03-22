@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
+  get "users/show"
+  get "users/likes"
   devise_for :users
+
+  resources :users do
+    member do
+      get :liked_posts
+    end
+  end
+
   resources :posts do
     resource :like, only: [ :create, :destroy ]
   end
