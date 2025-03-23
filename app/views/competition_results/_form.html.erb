@@ -45,28 +45,28 @@
 
       <div class="form sprint grid grid-cols-2  items-center" style="visibility: hidden; position: absolute;">
         <%= f.label :sprint_record, 'タイム', class: "mr-4" %>
-        <%= f.number_field :sprint_record, step: "0.01", placeholder: "タイムを入力", class: "border border-gray-300 p-1 rounded sprint-field" %>
+        <%= f.number_field :sprint_record, step: "0.01", placeholder: "例: 11.11", class: "border border-gray-300 p-1 rounded sprint-field" %>
       </div>
 
       <div class="form sprint grid grid-cols-2  items-center" style="visibility: hidden; position: absolute;">
         <%= f.label :sprint_wind_speed, '風速', class: "mr-4" %>
-        <%= f.number_field :sprint_wind_speed, step: "0.1", placeholder: "風速を入力" , class: "border border-gray-300 p-1 rounded sprint-field" %>
+        <%= f.number_field :sprint_wind_speed, step: "0.1", placeholder: "例: 1.0" , class: "border border-gray-300 p-1 rounded sprint-field" %>
       </div>
 
       <div class="form middle-and-long grid grid-cols-2  items-center" style="visibility: hidden; position: absolute;">
         <%= f.label :middle_and_long_record, 'タイム', class: "mr-4" %>
-        <%= f.number_field :middle_and_long_record, step: "0.01", placeholder: "タイムを入力" , class: "border border-gray-300 p-1 rounded middle-and-long-field" %>
+        <%= f.number_field :middle_and_long_record, step: "0.01", placeholder: "例: 119.99" , class: "border border-gray-300 p-1 rounded middle-and-long-field" %>
       </div>
 
       <div class="lap-time-area">
         <div class="form middle-and-long grid grid-cols-2  items-center" style="visibility: hidden; position: absolute;">
           <%= f.label :lap_distance, '距離', class: "mr-4" %>
-          <%= f.number_field :lap_distance, placeholder: "ラップの距離を入力" , class: "border border-gray-300 p-1 rounded middle-and-long-field" %>
+          <%= f.number_field :lap_distance, placeholder: "例: 400" , class: "border border-gray-300 p-1 rounded middle-and-long-field" %>
         </div>
 
         <div class="form middle-and-long grid grid-cols-2  items-center" style="visibility: hidden; position: absolute;">
           <%= f.label :lap_time, 'ラップタイム', class: "mr-4" %>
-          <%= f.number_field :lap_time, step: "0.01", placeholder: "ラップタイムを入力" , class: "border border-gray-300 p-1 rounded middle-and-long-field" %>
+          <%= f.number_field :lap_time, step: "0.01", placeholder: "例: 55.99" , class: "border border-gray-300 p-1 rounded middle-and-long-field" %>
         </div>
       </div>
 
@@ -77,28 +77,28 @@
 
       <div class="form jumping grid grid-cols-2  items-center" style="visibility: hidden; position: absolute;">
         <%= f.label :jumping_record, '記録', class: "mr-4" %>
-        <%= f.number_field :jumping_record, step: "0.01", placeholder: "記録を入力" , class: "border border-gray-300 p-1 rounded jumping-field" %>
+        <%= f.number_field :jumping_record, step: "0.01", placeholder: "例: 7.00" , class: "border border-gray-300 p-1 rounded jumping-field" %>
       </div>
 
       <div class="form jumping grid grid-cols-2  items-center" style="visibility: hidden; position: absolute;">
         <%= f.label :jumping_wind_speed, '風速', class: "mr-4" %>
-        <%= f.number_field :jumping_wind_speed, step: "0.1", placeholder: "風速を入力" , class: "border border-gray-300 p-1 rounded jumping-field" %>
+        <%= f.number_field :jumping_wind_speed, step: "0.1", placeholder: "例: 1.0" , class: "border border-gray-300 p-1 rounded jumping-field" %>
       </div>
 
       <div class="form jumping grid grid-cols-2  items-center" style="visibility: hidden; position: absolute;">
         <%= f.label :jumping_approach_distance, '助走距離', class: "mr-4" %>
-        <%= f.number_field :jumping_approach_distance, step: "0.01", placeholder: "助走距離を入力" ,  class: "border border-gray-300 p-1 rounded jumping-field" %>
+        <%= f.number_field :jumping_approach_distance, step: "0.01", placeholder: "例: 23.55" ,  class: "border border-gray-300 p-1 rounded jumping-field" %>
       </div>
 
       <div class="form throwing grid grid-cols-2  items-center" style="visibility: hidden; position: absolute;">
         <%= f.label :throwing_record, '記録', class: "mr-4" %>
-        <%= f.number_field :throwing_record, step: "0.01", placeholder: "記録を入力" ,  class: "border border-gray-300 p-1 rounded throwing-field" %>
+        <%= f.number_field :throwing_record, step: "0.01", placeholder: "例: 30.15" ,  class: "border border-gray-300 p-1 rounded throwing-field" %>
       </div>
 
 
       <div class="form throwing grid grid-cols-2  items-center" style="visibility: hidden; position: absolute;">
         <%= f.label :throwing_approach_distance, '助走距離', class: "mr-4" %>
-        <%= f.number_field :throwing_approach_distance, placeholder: "助走距離を入力" , step: "0.01",  class: "border border-gray-300 p-1 rounded throwing-field" %>
+        <%= f.number_field :throwing_approach_distance, placeholder: "例: 20.55" , step: "0.01",  class: "border border-gray-300 p-1 rounded throwing-field" %>
       </div>
 
       <div class="grid grid-cols-2  items-center">
