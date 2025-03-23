@@ -2,7 +2,7 @@
 
   <div class="flex flex-col items-start space-y-2">
     <%= f.label :name, class: "text-lg font-medium" %>
-    <%= f.text_field :name, class: "border border-gray-300 text-base p-2 w-full rounded-md" %>
+    <%= f.text_field :name, placeholder: "名前またはニックネームでも可",  class: "border border-gray-300 text-base p-2 w-full rounded-md" %>
   </div>
 
   <div>
@@ -22,12 +22,12 @@
 
   <div class="flex flex-col items-start space-y-2  mt-10">
     <%= f.label :areas, class: "text-lg font-medium" %>
-    <%= f.text_field :areas, class: "border border-gray-300 text-base p-2 w-full rounded-md" %>
+    <%= f.text_field :areas, placeholder: "例： 東京",  class: "border border-gray-300 text-base p-2 w-full rounded-md" %>
   </div>
 
   <div class="flex flex-col items-start space-y-2">
     <%= f.label :event, class: "text-lg font-medium" %>
-    <%= f.text_field :event, class: "border border-gray-300 text-base p-2 w-full rounded-md" %>
+    <%= f.select :event, @event_type, {include_blank: '専門種目を選択してください' }, { class: 'border border-gray-300 p-1 rounded' } %>
   </div>
 
   <div class="flex flex-col items-start space-y-2">
