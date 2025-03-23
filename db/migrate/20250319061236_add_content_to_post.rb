@@ -1,5 +1,5 @@
 class AddContentToPost < ActiveRecord::Migration[7.2]
   def change
-    add_column :posts, :content, :text, null: false
+    add_column :posts, :content, :text, null: false, default: ""
   end
 end
