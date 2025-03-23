@@ -1,5 +1,7 @@
 <div class="bg-white shadow-lg rounded-lg p-6 w-full max-w-lg mx-auto mt-4">
-  <%= link_to "ログアウト", destroy_user_session_path, data: { 'turbo-method': :delete} %>
+  <div class="flex justify-center mb-4">
+    <%= link_to "ログアウト", destroy_user_session_path, data: { 'turbo-method': :delete }, class: "bg-red-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition" %>
+  </div>
   <h2 class="text-xl font-bold text-center border-b pb-2 mb-4">プロフィール</h2>
 
   <div class="space-y-4">
@@ -21,11 +23,15 @@
     </div>
     <div class="flex gap-2 items-center">
       <span class="font-semibold">専門種目：</span>
-      <span><%= current_user.profile.event %></span>
+      <span><%= I18n.t("enums.competition_result.event_type.#{current_user.profile.event}") %></span>
     </div>
     <div class="flex gap-2 items-center">
       <span class="font-semibold">目標：</span>
-      <span><%= current_user.profile.goal %></span>
+      <% if current_user.profile.event == "sprint" ||  current_user.profile.event == "middle_and_long"%>
+        <span><%= current_user.profile.goal.to_s.gsub('.', '秒') %></span>
+      <% else %>
+        <span><%= current_user.profile.goal.to_s.gsub('.', 'm') %></span>
+      <% end %>
     </div>
     <div>
       <span class="font-semibold">自己紹介：</span>
@@ -38,7 +44,7 @@
   </div>
 </div>
 <br>
-<div data-controller="select-event" class="bg-white shadow-lg rounded-lg p-6 w-full max-w-lg mx-auto">
+<div class="bg-white shadow-lg rounded-lg p-6 w-full max-w-lg mx-auto">
   <h2 class="text-xl font-bold text-center border-b pb-2 mb-4">いいねを送った投稿</h2>
     <div class="flex gap-2 items-center justify-center">
       <%= link_to "一覧へ", liked_posts_user_path(@user)  ,class: "font-semibold inline-block bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition" %>

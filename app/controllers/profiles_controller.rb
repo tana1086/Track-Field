@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_profile, only: [ :edit, :update, :show ]
+  before_action :event_type, only: [ :new, :create, :show, :edit, :update ]
 
   def show
     @user = Profile.find(params[:id])
@@ -66,5 +67,9 @@ class ProfilesController < ApplicationController
 
   def  profile_params
     params.require(:profile).permit(:name, :icon, :areas, :event, :goal, :self_introduction, :avatar).merge(user_id: current_user.id)
+  end
+
+  def event_type
+    @event_type = CompetitionResult.event_types.keys.map { |k| [ I18n.t("enums.competition_result.event_type.#{k}"), k ] }
   end
 end
