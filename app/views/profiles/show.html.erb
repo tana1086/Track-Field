@@ -1,5 +1,7 @@
 <div class="bg-white shadow-lg rounded-lg p-6 w-full max-w-lg mx-auto mt-4">
-  <%= link_to "ログアウト", destroy_user_session_path, data: { 'turbo-method': :delete}, class: "" %>
+  <div class="flex justify-center mb-4">
+    <%= link_to "ログアウト", destroy_user_session_path, data: { 'turbo-method': :delete }, class: "bg-red-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition" %>
+  </div>
   <h2 class="text-xl font-bold text-center border-b pb-2 mb-4">プロフィール</h2>
 
   <div class="space-y-4">
